@@ -1,0 +1,56 @@
+----------------------------------------------------------------------------------------
+
+python3 -m venv venv
+source venv/bin/activate
+
+
+
+----------------------------------------------------------------------------------------
+
+brew list kafka
+which kafka-server-start
+kafka-topics --version
+
+
+kafka-topics \
+--bootstrap-server localhost:9092 \
+--list
+
+
+----------------------------------------------------------------------------------------
+
+
+
+Step 1: Start Kafka Service
+
+The Kafka broker was started using Homebrew services:
+brew services start kafka
+
+Kafka service status was verified using:
+brew services list
+
+Step 2: Create Kafka Topic
+A topic named weather-data was created to store meteorological observations.
+
+kafka-topics \
+--create \
+--topic weather-data \
+--bootstrap-server localhost:9092
+
+Step 3: Verify Topic Creation
+kafka-topics \
+--list \
+--bootstrap-server localhost:9092
+
+Expected output:
+weather-data
+
+Step 4: Publish Weather Data
+python producer.py
+
+
+Step 5: Subscribe Using Consumer
+python consumer.py
+
+
+----------------------------------------------------------------------------------------

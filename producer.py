@@ -5,6 +5,9 @@ import requests_cache
 
 from kafka import KafkaProducer
 from retry_requests import retry
+from datetime import datetime
+
+today = datetime.today().strftime('%Y-%m-%d')
 
 producer = KafkaProducer(
     bootstrap_servers='localhost:9092',
@@ -33,7 +36,7 @@ locations = [
 
 common_params = {
     "start_date": "2025-01-01",
-    "end_date": "2025-01-31",
+    "end_date": today, #"2025-01-31",
     "hourly": [
         "rain",
         "precipitation",
