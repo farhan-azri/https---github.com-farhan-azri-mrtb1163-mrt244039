@@ -43,7 +43,7 @@ kafka-topics \
 --bootstrap-server localhost:9092
 
 Expected output:
-weather-data
+weather-datas
 
 Step 4: Publish Weather Data
 python producer.py
